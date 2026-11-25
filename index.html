@@ -161,7 +161,7 @@ body{font-size:14px}
   <section class="panel input-panel">
       <div class="panel-heading"><div class="section-title">Parámetros de entrada</div><div class="section-index">WGS 84 · ALTURAS EN METROS</div></div>
     <form id="geo-form" class="form-grid">
-      <div class="field span4"><label for="gravity">Modelo gravitacional <small>EGM</small></label><select id="gravity"><optgroup label="EGM2008"><option value="EGM2008_Agisoft">Agisoft (2.5′)</option><option value="EGM2008_GeographicLib">GeographicLib (2.5′)</option></optgroup><optgroup label="EGM96"><option value="EGM96_Agisoft">Agisoft (15′)</option><option value="EGM96_GeographicLib">GeographicLib (15′)</option></optgroup><optgroup label="EGM84"><option value="EGM84_Agisoft">Agisoft (30′)</option><option value="EGM84_GeographicLib">GeographicLib (30′)</option></optgroup><option value="agisoft">Solo Agisoft</option><option value="geographiclib">Solo GeographicLib</option><option value="all">Todos los modelos · Agisoft + GeographicLib</option></select></div>
+      <div class="field span4"><label for="gravity">Modelo gravitacional <small>EGM</small></label><select id="gravity"><optgroup label="EGM2008"><option value="EGM2008_Agisoft">Agisoft (2.5′)</option><option value="EGM2008_GeographicLib">GeographicLib (2.5′)</option><option value="EGM2008_CHILE">Chile Tile (1°) · Solo Chile</option></optgroup><optgroup label="EGM96"><option value="EGM96_Agisoft">Agisoft (15′)</option><option value="EGM96_GeographicLib">GeographicLib (15′)</option><option value="EGM96_CHILE">Chile Tile (5°) · Solo Chile</option></optgroup><optgroup label="EGM84"><option value="EGM84_Agisoft">Agisoft (30′)</option><option value="EGM84_GeographicLib">GeographicLib (30′)</option></optgroup><optgroup label="EIGEN-6C4"><option value="EIGEN6C4_CHILE">Chile Tile (5°) · Solo Chile</option></optgroup><option value="chile">Solo Chile (EIGEN-6C4 + EGM2008 + EGM96 tiles)</option><option value="agisoft">Solo Agisoft</option><option value="geographiclib">Solo GeographicLib</option><option value="all">Todos los modelos · Agisoft + GeographicLib</option></select></div>
       <div class="field span4"><label for="height-model">Tipo de entrada <small id="height-formula">h = H + N</small></label><select id="height-model"><option value="ellipsoidal">h elipsoidal · h = H + N</option><option value="orthometric">H ortométrica · H = h − N</option><option value="geoid">Solo N · N = h − H</option></select></div>
       <div class="field span4"><label for="interpolation">Método de interpolación <small>GRID</small></label><select id="interpolation"><option value="bilinear">Bilineal</option><option value="bicubic">Bicúbica</option><option value="nearest">Vecino más cercano</option></select></div>
       <div class="field"><label for="lat">Latitud <small>φ / DECIMAL °</small></label><input id="lat" type="number" step="any" min="-90" max="90" value="-38.7250234944" required></div>
@@ -205,7 +205,7 @@ body{font-size:14px}
       <div class="field"><label for="csv-lat">Columna de latitud</label><select id="csv-lat" disabled></select></div>
       <div class="field"><label for="csv-lon">Columna de longitud</label><select id="csv-lon" disabled></select></div>
       <div class="field"><label for="csv-height">Columna de altura (m)</label><select id="csv-height" disabled></select></div>
-      <div class="field"><label for="csv-model">Modelo(s) geoidal(es)</label><select id="csv-model"><optgroup label="EGM2008"><option value="EGM2008_Agisoft">Agisoft (2.5′)</option><option value="EGM2008_GeographicLib">GeographicLib (2.5′)</option></optgroup><optgroup label="EGM96"><option value="EGM96_Agisoft">Agisoft (15′)</option><option value="EGM96_GeographicLib">GeographicLib (15′)</option></optgroup><optgroup label="EGM84"><option value="EGM84_Agisoft">Agisoft (30′)</option><option value="EGM84_GeographicLib">GeographicLib (30′)</option></optgroup><option value="agisoft">Solo Agisoft</option><option value="geographiclib">Solo GeographicLib</option><option value="all">Todos los modelos · Agisoft + GeographicLib</option></select></div>
+      <div class="field"><label for="csv-model">Modelo(s) geoidal(es)</label><select id="csv-model"><optgroup label="EGM2008"><option value="EGM2008_Agisoft">Agisoft (2.5′)</option><option value="EGM2008_GeographicLib">GeographicLib (2.5′)</option><option value="EGM2008_CHILE">Chile Tile (1°) · Solo Chile</option></optgroup><optgroup label="EGM96"><option value="EGM96_Agisoft">Agisoft (15′)</option><option value="EGM96_GeographicLib">GeographicLib (15′)</option><option value="EGM96_CHILE">Chile Tile (5°) · Solo Chile</option></optgroup><optgroup label="EGM84"><option value="EGM84_Agisoft">Agisoft (30′)</option><option value="EGM84_GeographicLib">GeographicLib (30′)</option></optgroup><optgroup label="EIGEN-6C4"><option value="EIGEN6C4_CHILE">Chile Tile (5°) · Solo Chile</option></optgroup><option value="chile">Solo Chile (EIGEN-6C4 + EGM2008 + EGM96 tiles)</option><option value="agisoft">Solo Agisoft</option><option value="geographiclib">Solo GeographicLib</option><option value="all">Todos los modelos · Agisoft + GeographicLib</option></select></div>
       <div class="field"><label for="csv-interpolation">Interpolación</label><select id="csv-interpolation"><option value="bilinear">Bilineal</option><option value="bicubic">Bicúbica</option></select></div>
     </div>
     <div class="actions" style="margin-top:15px"><button class="btn" id="csv-process" type="button" disabled>Procesar CSV</button><button class="btn secondary" id="csv-download" type="button" disabled>Descargar resultados</button><span class="form-note" id="csv-summary">Aún no hay archivo cargado</span></div>
@@ -442,7 +442,7 @@ const model = $('#gravity');
 const interpolation = $('#interpolation');
 const heightModel = $('#height-model');
 const chartContent = $('#chart-content');
-const modelColors = {EGM2008_Agisoft:'#63dfd0',EGM2008_GeographicLib:'#c889ff',EGM96_Agisoft:'#93a6ff',EGM96_GeographicLib:'#ff82b2',EGM84_Agisoft:'#ffbd73',EGM84_GeographicLib:'#ffe06b'};
+const modelColors = {EGM2008_Agisoft:'#63dfd0',EGM2008_GeographicLib:'#c889ff',EGM96_Agisoft:'#93a6ff',EGM96_GeographicLib:'#ff82b2',EGM84_Agisoft:'#ffbd73',EGM84_GeographicLib:'#ffe06b',EIGEN6C4_CHILE:'#ff6b6b',EGM2008_CHILE:'#ff9f43',EGM96_CHILE:'#74b9ff'};
 const modelResolution = (name) => currentLanguage==='en'?models[name].resolution:models[name].resolution.replace(' Grid',' Grilla');
 const modelLabel = (name, includeResolution=false) => {const descriptor=models[name];const resolution=modelResolution(name).match(/^[^ ]+/)?.[0]||'';return `${descriptor?.gravity||name} (${descriptor?.source||''}${includeResolution?` · ${resolution}`:''})`;};
 function updateHeightInputLabel() {
@@ -615,14 +615,18 @@ const models = {
   EGM96_Agisoft: {gravity:'EGM96',source:'Agisoft',file:'us_nga_egm96_15.tif',resolution:'15′ Grid (~27.8 km)',valueScale:1,valueOffset:0},
   EGM96_GeographicLib: {gravity:'EGM96',source:'GeographicLib',file:'egm96-15_GeographicLib.tif',resolution:'15′ Grid (~27.8 km)',valueScale:0.003,valueOffset:-108},
   EGM84_Agisoft: {gravity:'EGM84',source:'Agisoft',file:'us_nga_egm84_30.tif',resolution:'30′ Grid (~55.6 km)',valueScale:1,valueOffset:0},
-  EGM84_GeographicLib: {gravity:'EGM84',source:'GeographicLib',file:'egm84-30_GeographicLib.tif',resolution:'30′ Grid (~55.6 km)',valueScale:0.003,valueOffset:-108}
+  EGM84_GeographicLib: {gravity:'EGM84',source:'GeographicLib',file:'egm84-30_GeographicLib.tif',resolution:'30′ Grid (~55.6 km)',valueScale:0.003,valueOffset:-108},
+  EIGEN6C4_CHILE: {gravity:'EIGEN-6C4',source:'Chile Tile (5°)',file:'geoid_EIGEN-6C4_84a90854b087fa3dbfbc371c751e50bd13fe9de8728c2840b6b5342ba120161d.tiff',resolution:'5° Tile (Chile only, ~555 km)',valueScale:1,valueOffset:0,bounds:{minLon:-77.8,maxLon:-67.8,minLat:-37.3,maxLat:-32.3}},
+  EGM2008_CHILE: {gravity:'EGM2008',source:'Chile Tile (1°)',file:'geoid_EGM2008_55eec680223ea43485a435a5271acc02bfa15b13ccd16e2cfcb939c6b6bc83f9.tiff',resolution:'1° Tile (Chile small area)',valueScale:1,valueOffset:0,bounds:{minLon:-75.06,maxLon:-74.06,minLat:-36.3,maxLat:-35.3}},
+  EGM96_CHILE: {gravity:'EGM96',source:'Chile Tile (5°)',file:'geoid_EGM96_15f1d3b3c641454413099f19615e7fa1cf4f0c2521397cd11c089dde18e5f792.tiff',resolution:'5° Tile (Chile only, ~555 km)',valueScale:1,valueOffset:0,bounds:{minLon:-77.8,maxLon:-67.8,minLat:-37.3,maxLat:-32.3}}
 };
 function selectedModelNames(selection) {
   if(selection==='all')return Object.keys(models);
+  if(selection==='chile')return ['EIGEN6C4_CHILE','EGM2008_CHILE','EGM96_CHILE'];
   if(selection==='agisoft'||selection==='geographiclib')return Object.keys(models).filter((name)=>models[name].source.toLowerCase()===selection);
   return models[selection]?[selection]:[];
 }
-function isModelSet(selection) { return ['agisoft','geographiclib','all'].includes(selection); }
+function isModelSet(selection) { return ['agisoft','geographiclib','all','chile'].includes(selection); }
 function primaryEgm2008Name(selection) {
   if(selection==='geographiclib'||(models[selection]&&models[selection].source==='GeographicLib'))return 'EGM2008_GeographicLib';
   return 'EGM2008_Agisoft';
@@ -637,7 +641,7 @@ async function loadGrid(name) {
       const image = await tiff.getImage();
       const origin = image.getOrigin();
       const resolution = image.getResolution();
-      return {image, origin, dx: resolution[0], dy: Math.abs(resolution[1]), width: image.getWidth(), height: image.getHeight(), pixelIsArea: image.pixelIsArea(), valueScale:models[name].valueScale, valueOffset:models[name].valueOffset};
+      return {image, origin, dx: resolution[0], dy: Math.abs(resolution[1]), width: image.getWidth(), height: image.getHeight(), pixelIsArea: image.pixelIsArea(), valueScale:models[name].valueScale, valueOffset:models[name].valueOffset, bounds:models[name].bounds};
     }).catch((error) => { grids.delete(name); throw new Error(`No pude cargar Grids/${models[name].file}. Abre esta página con Live Server o GitHub Pages y confirma que la carpeta Grids se publique junto al HTML. ${error.message || ''}`); });
     grids.set(name, promise);
   }
@@ -648,6 +652,10 @@ function cubic(a, b, c, d, t) {
 }
 async function undulation(name, lat, lon, method) {
   const grid = await loadGrid(name);
+  // Check bounds for EIGEN6C4_CHILE
+  if (grid.bounds && (lon < grid.bounds.minLon || lon > grid.bounds.maxLon || lat < grid.bounds.minLat || lat > grid.bounds.maxLat)) {
+    throw new Error('Coordenadas fuera de cobertura de la grilla EIGEN-6C4 Chile');
+  }
   const wrappedLon = ((lon + 180) % 360 + 360) % 360 - 180;
   const gridLon = grid.origin[0] >= 0 ? ((lon % 360) + 360) % 360 : wrappedLon;
   // These NGA geoid TIFFs use PixelIsPoint, so their tiepoint is the first
