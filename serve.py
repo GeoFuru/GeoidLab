@@ -75,7 +75,7 @@ class RangeRequestHandler(SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     os.chdir(Path(__file__).resolve().parent)
     server = ThreadingHTTPServer(("127.0.0.1", 8765), RangeRequestHandler)
-    print("GeoidLab: http://localhost:8765/geoidlab.html")
+    print("GeoidLab: http://localhost:8765/")
     print("Serving this project with byte-range support. Press Ctrl+C to stop.")
     try:
         server.serve_forever()
