@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+Private/
+Grids/*.tar.bz2
+Grids/*.exe
+Grids/*.aux.xml
+Grids/us_nga_egm2008_1.tif
+.DS_Store
+Thumbs.db
+.vscode/
