@@ -8,10 +8,6 @@ import shutil
 
 
 class RangeRequestHandler(SimpleHTTPRequestHandler):
-    def end_headers(self):
-        self.send_header("Cache-Control", "no-store")
-        super().end_headers()
-
     def send_head(self):
         path = self.translate_path(self.path)
         if os.path.isdir(path):

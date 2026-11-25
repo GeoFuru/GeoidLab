@@ -483,9 +483,7 @@ function drawCsvChart(series, labels, heights, methodLabel) {
 }
 let resultMap=null,resultMapLayers=null,resultMapRenderer=null;
 let manualAddMode=false,manualPointBusy=false,manualProfile=[],csvOutputBase=null;
-let lastMapRender={points:[],description:'Activa añadir puntos y haz clic en el mapa para crear un perfil.',fitBounds:true};
 function renderPointMap(points, description, fitBounds=true) {
-  lastMapRender={points,description,fitBounds};
   $('#map-sub').textContent=description;
   if(!window.L){$('#csv-map').textContent='No se pudo cargar el mapa. Revisa tu conexión.';return;}
   if(!resultMap){
@@ -855,7 +853,6 @@ csvDownload.addEventListener('click', () => {
 drawNormalChart([], 'ESPERANDO UN CÁLCULO');
 drawCsvChart([], [], [], '');
 renderPointMap([], 'Activa añadir puntos y haz clic en el mapa para crear un perfil.');
-window.addEventListener('load',()=>{if(window.L)renderPointMap(lastMapRender.points,lastMapRender.description,lastMapRender.fitBounds);});
 </script>
 </body>
 </html>

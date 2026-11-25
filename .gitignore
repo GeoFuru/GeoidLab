@@ -1,11 +1,20 @@
+# Local Python environment
 .venv/
 __pycache__/
 *.py[cod]
+
+# Private working material
 Private/
+
+# Source archives and local installer; the app uses the converted GeoTIFFs
 Grids/*.tar.bz2
 Grids/*.exe
 Grids/*.aux.xml
+
+# Full 1-minute grid is not used by the app and exceeds GitHub's 100 MB limit
 Grids/us_nga_egm2008_1.tif
+
+# Editor and OS files
 .DS_Store
 Thumbs.db
 .vscode/
